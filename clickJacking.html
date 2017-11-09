@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Click Jacking Sample</title>
+</head>
+<body>
+	<h1 style="background: #71b1d6">Click-Jacking Sample</h1>
+	<input type="checkbox" id="state" checked>opacity=0
+	<iframe src="load.html" style="filter:alpha(opacity=0);width:100%;height:100%;"></iframe>
+	<button style="position:absolute;top:222px;padding:15px 30px;margin:10px;z-index: -1;" onClick=
+"alert('マルウェアに感染しました')">PLAY</button>
+	<style type="text/css">
+		input[type="checkbox"] + iframe {
+			opacity: 1;
+		}
+		input[type="checkbox"]:checked + iframe {
+			opacity: 0;
+		}
+	</style>
+</body>
+</html>
